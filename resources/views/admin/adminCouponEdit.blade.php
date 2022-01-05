@@ -99,31 +99,33 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
-        <h1 class="text-center">Category Management</h1>
-        <div><a href="/admin/addCategoryPage" class="btn btn-success float-right mb-2"> Add Product Category</a></div>
-        <table class="table table-bordered mt-5">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Category Name </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $sno=1 @endphp
-                @foreach ($CategoryData as $item)
-                <tr>
-                    <td>{{$sno}}</td>
-                    <td>{{$item->category_name}}</td>
-                    <td>
-                        <a href="/admin/category/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</a>
-                        <a href="/admin/category/edit/{{$item->id}}" class="btn btn-info ">Edit</a>
-                    </td>
-                    </tr>
-                    @php $sno+=1 @endphp
-                @endforeach
-            </tbody>
-        </table>
+    <div class="container col-4">
+        <h1 class="text-center">Coupon Management</h1>
+        <form class="mt-5" action="/admin/coupon/update/{{$CouponData->id}}" method="post">
+          @csrf()
+          <div class="form-group">
+            <label for="">Coupon</label>
+            <input type="text" class="form-control" name="coupon" value="{{$CouponData->coupon}}">
+          </div>
+          <div class="form-group">
+            <label for="">Discount</label>
+            <input type="text" class="form-control" name="discount" value="{{$CouponData->discount}}">
+          </div>
+          <div class="form-group">
+            <label for="">Status</label>
+            <select name="status" id="" class="form-control">
+              @if($CouponData->status==1){
+              <option value="1" selected >Active</option>
+              <option value="0" >Inactive</option>
+              }
+              @elseif($CouponData->status==0){
+              <option value="1"  >Active</option>
+              <option value="0" selected >Inactive</option>
+              }
+              @endif
+            </select>
+          </div>
+          <input type="submit" class="btn btn-success form-control" value="Update">
+        </form>
     </div>
 @endsection()

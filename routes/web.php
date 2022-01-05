@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ProductcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,9 @@ Route::middleware('auth')->group(function () {
     // admin routes
     Route::get('/adminConfiguration', [UsersController::class, 'ShowAddPage'])->name('adminConfiguration');
     Route::post('/adminBanner', [UsersController::class, 'Add'])->name('adminBanner');
-    Route::get('/adminCategory', [UsersController::class, 'Show'])->name('adminCategory');
+    Route::get('/adminCategory', [ProductcategoryController::class, 'ShowCategory'])->name('adminCategory');
+    Route::post('/admin/category/add',[ProductcategoryController::class,'Store']);
+    Route::get('/admin/addCategoryPage', [ProductcategoryController::class, 'ShowAddCategoryPage']);
     Route::get('/adminProducts', [UsersController::class, 'Destroy'])->name('adminProducts');
     Route::get('/adminCoupon', [CouponController::class, 'ShowCoupon'])->name('adminCoupon');
     Route::post('/adminCms', [UsersController::class, 'Update'])->name('adminCms');
@@ -45,4 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/adminContactUs', [ContactUsController::class, 'showContactUs'])->name('adminContactUs');
     Route::get('/admin/contactus/delete/{id}', [ContactUsController::class, 'Destroy']);
     Route::get('/admin/coupon/delete/{id}', [CouponController::class, 'Destroy']);
+    Route::get('/admin/coupon/edit/{id}', [CouponController::class, 'Edit']);
+    Route::post('/admin/coupon/update/{id}', [CouponController::class, 'Update']);
+    Route::get('/admin/category/delete/{id}', [ProductcategoryController::class, 'Destroy']);
+
 });

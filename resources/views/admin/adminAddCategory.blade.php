@@ -99,31 +99,20 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
+    <div class="container col-5">
         <h1 class="text-center">Category Management</h1>
-        <div><a href="/admin/addCategoryPage" class="btn btn-success float-right mb-2"> Add Product Category</a></div>
-        <table class="table table-bordered mt-5">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Category Name </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $sno=1 @endphp
-                @foreach ($CategoryData as $item)
-                <tr>
-                    <td>{{$sno}}</td>
-                    <td>{{$item->category_name}}</td>
-                    <td>
-                        <a href="/admin/category/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</a>
-                        <a href="/admin/category/edit/{{$item->id}}" class="btn btn-info ">Edit</a>
-                    </td>
-                    </tr>
-                    @php $sno+=1 @endphp
-                @endforeach
-            </tbody>
-        </table>
+        
+        <form class="mt-5 " action="/admin/category/add" method="post">
+          @csrf()
+          <div class="form-group">
+            <label for="">Category Name</label>
+            <input type="text" class="form-control" name="category_name">
+          </div>
+          
+          <div class="row">
+            <input type="submit" class="btn btn-success col-4 ml-5" value="Add Category">
+            <a href="/adminCategory" class="btn btn-primary col-4 ml-5"> Cancel</a>
+          </div>
+        </form>
     </div>
 @endsection()
