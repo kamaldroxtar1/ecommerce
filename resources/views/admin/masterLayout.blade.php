@@ -111,37 +111,31 @@
         <nav class="mt-2">
          <ul class="list-group">
              <li class="list-group-item">
-                 <a href="{{route('superadminShowList')}}">User Management</a>
+                 <a href="{{route('adminConfiguration')}}">Configuration Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Add User</a>
+                 <a href="{{route('adminBanner')}}">Banner Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Configuration Management</a>
+                 <a href="{{route('adminCategory')}}">Category Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Banner Management</a>
+                 <a href="{{route('adminProducts')}}">Product Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Category Management</a>
+                 <a href="{{route('adminCoupon')}}">Coupon Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Product Management</a>
+                 <a href="{{route('adminCms')}}">Admin CMS User</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Coupon Management</a>
+                 <a href="{{route('adminOrder')}}">Order Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Admin CMS User</a>
+                 <a href="{{route('adminReports')}}">Reports</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Order Management</a>
-             </li>
-             <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Reports</a>
-             </li>
-             <li class="list-group-item">
-                 <a href="{{route('superadminAddUserPage')}}">Contact Forms</a>
+                 <a href="{{route('adminContactUs')}}">Contact Forms</a>
              </li>
          </ul>
         </nav>

@@ -55,8 +55,7 @@
     </nav>
 @endsection()
 @section('sidebar')
-      <!-- Brand Logo -->
-      <a href="home" class="brand-link">
+<a href="home" class="brand-link">
         <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin Platform</span>
       </a>
@@ -94,5 +93,5 @@
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-<h1>hie you are a  admin user</h1>
+<h1>hie you are a super admin user</h1>
 @endsection()

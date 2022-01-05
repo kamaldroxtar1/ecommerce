@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+
 use App\Models\Roles;
 class UsersController extends Controller
 {
@@ -37,7 +39,7 @@ class UsersController extends Controller
             $name = $request->name;
             $l_name = $request->l_name;
             $email = $request->email;
-            $password=$request->password;
+            $password=Hash::make($request->password);
             $role_id = $request->role_id;
 
             $UserModel=new User();

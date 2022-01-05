@@ -92,7 +92,36 @@
             
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+        {{Session::get('success')}}
+        </div>
+        @endif
       </div>
       <!-- /.content-header -->
-<h1>hie you are a  admin user</h1>
+    <div class="container">
+        <h1 class="text-center">Contact Us Page</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact no</th>
+                    <th>Message</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($ContactUsData as $item)
+                <tr>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->email}}</td>
+                    <td>{{$item->phone}}</td>
+                    <td>{{$item->message}}</td>
+                    <td><a href="/admin/contactus/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Remove</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection()

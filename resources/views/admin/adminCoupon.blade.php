@@ -92,7 +92,37 @@
             
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+        {{Session::get('success')}}
+        </div>
+        @endif
       </div>
       <!-- /.content-header -->
-<h1>hie you are a  admin user</h1>
+    <div class="container">
+        <h1 class="text-center">Coupon Management</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Coupon</th>
+                    <th>Discount %</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($CouponData as $item)
+                <tr>
+                    <td>{{$item->coupon}}</td>
+                    <td>{{$item->discount}}</td>
+                    <td>{{$res=($item->status ==1) ? ("Active"):('Inactive')}}</td>
+                    <td>
+                        <a href="/admin/coupon/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Remove</a>
+                        <a href="/admin/coupon/edit/{{$item->id}}" class="btn btn-info ">Edit</a>
+                    </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection()
