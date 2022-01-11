@@ -101,6 +101,7 @@
       <!-- /.content-header -->
     <div class="container">
         <h1 class="text-center">Coupon Management</h1>
+        <div><a href="/admin/addCouponPage" class="btn btn-success float-right mb-2"> Add Coupon</a></div>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>

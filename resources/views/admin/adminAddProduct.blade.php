@@ -99,34 +99,30 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
+    <div class="container col-5">
         <h1 class="text-center">Products Management</h1>
-        <div><a href="/admin/addProductPage" class="btn btn-success float-right mb-2"> Add Product</a></div>
-        <table class="table table-bordered mt-5">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Product Name </th>
-                    <th>Product Category </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $sno=1 @endphp
-                @foreach ($ProductsData as $item)
-                <tr>
-                    <td>{{$sno}}</td>
-                    <td>{{$item->product_name}}</td>
-                    <td>{{$item->ProductCategory->category_name}}</td>
-                    <td>
-                        <a href="/admin/product/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</a>
-                        <a href="/admin/product/edit/{{$item->id}}" class="btn btn-info ">Edit</a>
-                        <a href="/admin/product/images/{{$item->id}}" class="btn btn-primary ">Images</a>
-                    </td>
-                    </tr>
-                    @php $sno+=1 @endphp
-                @endforeach
-            </tbody>
-        </table>
+        
+        <form class="mt-5 " action="/admin/product/add" method="post">
+          @csrf()
+          
+          <div class="form-group">
+            <label for="">Product Category</label>
+            <select name="product_category" id="" class="form-control">
+              <option value="">Select Product Category</option>
+              @foreach($CategoryData as $item)
+                    <option  value="{{$item->id}}">{{$item->category_name}}</option>
+                    
+                 @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Product Name</label>
+            <input type="text" class="form-control" name="product_name">
+          </div>
+          <div class="row">
+            <input type="submit" class="btn btn-success col-4 ml-5" value="Add Product">
+            <a href="/adminProducts" class="btn btn-primary col-4 ml-5"> Cancel</a>
+          </div>
+        </form>
     </div>
 @endsection()

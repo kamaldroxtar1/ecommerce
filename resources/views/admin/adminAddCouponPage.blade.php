@@ -99,34 +99,27 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
-        <h1 class="text-center">Products Management</h1>
-        <div><a href="/admin/addProductPage" class="btn btn-success float-right mb-2"> Add Product</a></div>
-        <table class="table table-bordered mt-5">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Product Name </th>
-                    <th>Product Category </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $sno=1 @endphp
-                @foreach ($ProductsData as $item)
-                <tr>
-                    <td>{{$sno}}</td>
-                    <td>{{$item->product_name}}</td>
-                    <td>{{$item->ProductCategory->category_name}}</td>
-                    <td>
-                        <a href="/admin/product/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</a>
-                        <a href="/admin/product/edit/{{$item->id}}" class="btn btn-info ">Edit</a>
-                        <a href="/admin/product/images/{{$item->id}}" class="btn btn-primary ">Images</a>
-                    </td>
-                    </tr>
-                    @php $sno+=1 @endphp
-                @endforeach
-            </tbody>
-        </table>
+    <div class="container col-4">
+        <h1 class="text-center">Coupon Management</h1>
+        <form class="mt-5" action="/admin/Coupon/add" method="post">
+          @csrf()
+          <div class="form-group">
+            <label for="">Coupon</label>
+            <input type="text" class="form-control" name="coupon" >
+          </div>
+          <div class="form-group">
+            <label for="">Discount</label>
+            <input type="text" class="form-control" name="discount" >
+          </div>
+          <div class="form-group">
+            <label for="">Status</label>
+            <select name="status" id="" class="form-control">
+              <option value="">--Select Status--</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+          <input type="submit" class="btn btn-success form-control" value="Add Coupon">
+        </form>
     </div>
 @endsection()
