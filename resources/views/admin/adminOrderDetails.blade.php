@@ -100,43 +100,43 @@
       </div>
       <!-- /.content-header -->
     <div class="container">
-        <h1 class="text-center">Configuration Management</h1>
-        <!-- <div><a href="/admin/addBannerPage" class="btn btn-success float-right mb-2"> Add Banner</a></div> -->
-        <table class="table table-bordered">
+        <h1 class="text-center">Order Management</h1>
+        <table class="table table-bordered mt-5">
             <thead class="thead-dark">
                 <tr>
-                    <th>S.no</th>
-                    <th>Admin Email </th>
-                    <th>Notification Email </th>
+                    <th>Order Number</th>
+                    <th>User </th>
+                    <th>Shipping Method </th>
+                    <th>Payment Gateway  </th>
+                    <th>Total Amount </th>
+                    <th>Shipping Address </th>
+                    <th>Order Date </th>
+                    <th>Coupon Code </th>
+                    <th>Order Status </th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+    
+                @foreach ($OrderDetails as $item)
                 <tr>
-                    <td>1</td>
-                    <td>{{$ConfigData->admin_email}}</td>
-                    <td>{{$ConfigData->notification_email}}</td>
+                    <td><a href="/admin/orderProduct/{{$item->id}}" class="btn btn-secondary">{{$item->id}}</a></td>
+                    <td>{{$item->User->name}}</td>
+                    <td>{{$item->shipping_method}}</td>
+                    <td>{{$item->payment_gateway}}</td>
+                    <td>{{$item->total_amount}}</td>
+                    <td>{{$item->shipping_address}}</td>
+                    <td>{{$item->order_date}}</td>
+                    <td>{{$item->Coupons->coupon }}</td>
+                    <td>{{$n=($item->order_status==1)?"Active":"Inactive"}}</td>
+                    <td>
+                        <a href="/admin/order/delete/{{$item->id}}"  onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</a>
+                        <a href="/admin/order/edit/{{$item->id}}" class="btn btn-warning ">Edit</a>
+                    </td>
                     </tr>
+                 
+                @endforeach
             </tbody>
         </table>
-    </div>
-    <br>
-    <div class="container col-5" >
-        <h4 class="text-center">Edit </h4>
-        
-        <form class="mt-1 " action="/admin/configuration/edit/{{$ConfigData->id}}" method="post">
-          @csrf()
-          <div class="form-group">
-            <label for="">Admin Email :</label>
-            <input type="email" class="form-control" name="admin_email" value="{{$ConfigData->admin_email}}">
-          </div>
-          <div class="form-group">
-            <label for="">Notification Email :</label>
-            <input type="email" class="form-control" name="notification_email" value="{{$ConfigData->notification_email}}">
-          </div>
-          
-          <div class="text-center">
-            <input type="submit" class="btn btn-success" value="Update">
-          </div>
-        </form>
     </div>
 @endsection()

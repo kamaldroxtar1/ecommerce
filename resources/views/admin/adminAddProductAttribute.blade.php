@@ -99,43 +99,33 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
-        <h1 class="text-center">Configuration Management</h1>
-        <!-- <div><a href="/admin/addBannerPage" class="btn btn-success float-right mb-2"> Add Banner</a></div> -->
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Admin Email </th>
-                    <th>Notification Email </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>{{$ConfigData->admin_email}}</td>
-                    <td>{{$ConfigData->notification_email}}</td>
-                    </tr>
-            </tbody>
-        </table>
-    </div>
-    <br>
-    <div class="container col-5" >
-        <h4 class="text-center">Edit </h4>
+    <div class="container col-5">
+        <h1 class="text-center">Product Attributes Management</h1>
         
-        <form class="mt-1 " action="/admin/configuration/edit/{{$ConfigData->id}}" method="post">
+        <form class="mt-5 " action="/admin/product_attribute/add" method="post">
           @csrf()
-          <div class="form-group">
-            <label for="">Admin Email :</label>
-            <input type="email" class="form-control" name="admin_email" value="{{$ConfigData->admin_email}}">
-          </div>
-          <div class="form-group">
-            <label for="">Notification Email :</label>
-            <input type="email" class="form-control" name="notification_email" value="{{$ConfigData->notification_email}}">
-          </div>
           
-          <div class="text-center">
-            <input type="submit" class="btn btn-success" value="Update">
+          <div class="form-group">
+            <label for="">Product Name</label>
+            <select name="product_id" id="" class="form-control">
+              <option value="">--Select Product Name--</option>
+              @foreach($ProductsData as $item)
+                    <option  value="{{$item->id}}">{{$item->product_name}}</option>
+                    
+                 @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Quantity</label>
+            <input type="number" class="form-control" name="quantity">
+          </div>
+          <div class="form-group">
+            <label for="">Price</label>
+            <input type="decimal" class="form-control" name="price">
+          </div>
+          <div class="row">
+            <input type="submit" class="btn btn-success col-4 ml-5" value="Add Product Attribute">
+            <a href="/adminProductAttribute" class="btn btn-primary col-4 ml-5"> Cancel</a>
           </div>
         </form>
     </div>

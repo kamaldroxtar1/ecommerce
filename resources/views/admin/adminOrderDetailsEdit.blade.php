@@ -99,44 +99,53 @@
         @endif
       </div>
       <!-- /.content-header -->
-    <div class="container">
-        <h1 class="text-center">Configuration Management</h1>
-        <!-- <div><a href="/admin/addBannerPage" class="btn btn-success float-right mb-2"> Add Banner</a></div> -->
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>S.no</th>
-                    <th>Admin Email </th>
-                    <th>Notification Email </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>{{$ConfigData->admin_email}}</td>
-                    <td>{{$ConfigData->notification_email}}</td>
-                    </tr>
-            </tbody>
+    <div class="container text-center">
+        <h1 class="text-center">Order Management</h1>
+        <form action="/admin/order/update/{{$OrderData->id}}" method="POST">
+          @csrf
+        <table class="table table-bordered mt-5 col-5 m-auto">
+            <tr>
+              <th>Order Number:</th>
+              <td>{{$OrderData->id}}</td>
+            </tr>
+            <tr>
+            <th>User:</th>
+              <td>{{$OrderData->user_id}}</td>
+            </tr>
+            <tr>
+            <th>Shipping Method:</th>
+              <td>{{$OrderData->shipping_method}}</td>
+            </tr>
+            <tr>
+            <th>Payment Gateway:</th>
+              <td>{{$OrderData->payment_gateway}}</td>
+            </tr>
+            <tr>
+            <th>Total Amount:</th>
+              <td>{{$OrderData->total_amount}}</td>
+            </tr>
+            <tr>
+            <th>Shipping Address:</th>
+              <td>{{$OrderData->shipping_address}}</td>
+            </tr>
+            <tr>
+            <th>Order Date:</th>
+              <td>{{$OrderData->order_date}}</td>
+            </tr>
+            <tr>
+            <th>Coupon Code:</th>
+              <td>{{$OrderData->coupon_id }}</td>
+            </tr>
+            <tr>
+            <th>Order Status:</th>
+                <td> Active: <input type="radio" {{$c=($OrderData->order_status ==1)? 'checked':'unchecked'}} name="order_status" value='1'>
+                      <br>
+                    Inactive: <input type="radio" {{$c=($OrderData->order_status==0)? 'checked':'unchecked'}} name="order_status" value='0'>
+                </td>
+             
+            </tr>
         </table>
-    </div>
-    <br>
-    <div class="container col-5" >
-        <h4 class="text-center">Edit </h4>
-        
-        <form class="mt-1 " action="/admin/configuration/edit/{{$ConfigData->id}}" method="post">
-          @csrf()
-          <div class="form-group">
-            <label for="">Admin Email :</label>
-            <input type="email" class="form-control" name="admin_email" value="{{$ConfigData->admin_email}}">
-          </div>
-          <div class="form-group">
-            <label for="">Notification Email :</label>
-            <input type="email" class="form-control" name="notification_email" value="{{$ConfigData->notification_email}}">
-          </div>
-          
-          <div class="text-center">
-            <input type="submit" class="btn btn-success" value="Update">
-          </div>
+        <input type="submit" value="Update" class="btn btn-success m-2">
         </form>
     </div>
 @endsection()

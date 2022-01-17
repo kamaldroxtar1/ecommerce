@@ -126,14 +126,14 @@
                  <a href="{{route('adminCoupon')}}">Coupon Management</a>
              </li>
              <li class="list-group-item">
-                 <a href="{{route('adminCms')}}">Admin CMS User</a>
+                 <a href="{{route('adminProductAttribute')}}">Admin Product Attribute Management</a>
              </li>
              <li class="list-group-item">
                  <a href="{{route('adminOrder')}}">Order Management</a>
              </li>
-             <li class="list-group-item">
+             <!-- <li class="list-group-item">
                  <a href="{{route('adminReports')}}">Reports</a>
-             </li>
+             </li> -->
              <li class="list-group-item">
                  <a href="{{route('adminContactUs')}}">Contact Forms</a>
              </li>
